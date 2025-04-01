@@ -1,0 +1,205 @@
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2980b9;
+  --background-color: #f5f7fa;
+  --card-background: #ffffff;
+  --text-color: #333333;
+  --error-color: #e74c3c;
+  --success-color: #2ecc71;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.app-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+  font-size: 2.2rem;
+}
+
+.search-container {
+  margin-bottom: 30px;
+}
+
+.search-form {
+  display: flex;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.search-input {
+  flex: 1;
+  padding: 15px 20px;
+  border: none;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0 25px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 16px;
+}
+
+.search-button:hover {
+  background: var(--secondary-color);
+}
+
+.weather-card {
+  background: var(--card-background);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  display: none;
+}
+
+/* Show the weather card when we have city data */
+body:has(.city-name:not(:empty)) .weather-card {
+  display: block;
+}
+
+.city-name {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.weather-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.temp {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.weather-description {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  margin-bottom: 15px;
+}
+
+.weather-icon {
+  width: 80px;
+  height: 80px;
+}
+
+.more-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info-label {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.info-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.error-message {
+  background: var(--error-color);
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  display: none;
+}
+
+/* Show error message when there is an error */
+body:has(.error-message:not(:empty)) .error-message {
+  display: block;
+}
+
+.loading {
+  display: none;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.loading-spinner {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid var(--primary-color);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+
+  .search-form {
+    flex-direction: column;
+    border-radius: 15px;
+  }
+
+  .search-button {
+    border-radius: 0 0 15px 15px;
+    padding: 12px;
+  }
+
+  .temp {
+    font-size: 3rem;
+  }
+}
