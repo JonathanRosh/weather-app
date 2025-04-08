@@ -1,10 +1,11 @@
 import express from "express";
 import axios from "axios";
 import bodyParser from "body-parser";
+import "dotenv/config";
 
 const app = express();
 const port = 3000;
-const API_KEY = "REMOVED";
+const API_KEY = process.env.API_KEY;
 const API_URL = "https://api.openweathermap.org/data/2.5/weather";
 const DEFAULT_CITY = "London";
 
